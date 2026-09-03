@@ -4,7 +4,7 @@ Public website of **ConstitutionsPlus** — the *platform* of the Computational 
 
 Status: **specified, in preparation — no software released yet.** This site documents the specification and will change as the build advances.
 
-Single static page (inline CSS, no JavaScript, no trackers), served by GitHub Pages at https://constitutionsplus.com.
+Single static page (inline CSS, self-hosted fonts in `fonts/` (OFL), no third-party code, no trackers), served by GitHub Pages at https://constitutionsplus.com. Visual direction “Cartography” (3 Sep 2026), shared with ontology360.it and computational-ontology.com.
 
 | File | Purpose |
 |---|---|

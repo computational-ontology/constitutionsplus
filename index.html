@@ -12,7 +12,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://constitutionsplus.com/">
 <meta name="theme-color" content="#0f766e">
-<style>
+<style>@font-face{font-family:'Familjen Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/FamiljenGrotesk-var.woff2) format('woff2');}
+@font-face{font-family:'Familjen Grotesk';font-style:italic;font-weight:400 700;font-display:swap;src:url(fonts/FamiljenGrotesk-italic-var.woff2) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500 600;font-display:swap;src:url(fonts/CormorantGaramond-italic-var.woff2) format('woff2');}
+
   :root{
     --bg:#ffffff; --bg2:#f7f9fb; --panel:#ffffff; --ink:#0f1a24; --ink2:#28323d;
     --mut:#5a6b7b; --line:#e4e9ee; --line2:#eef2f6;
@@ -242,6 +245,113 @@
   .hero.sub{padding:56px 0 44px;}
   .hero.sub h1{font-size:clamp(28px,4.2vw,44px);}
 
+  /* ---------- Cartography direction (3 Sep 2026): white, hard rules, big type, the chain as a route ---------- */
+  :root{--rule:#0f1a24; --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;}
+  @media (prefers-color-scheme: dark){:root{--rule:#e8eef4;}}
+  body{font-family:"Familjen Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0;}
+  h1,h2,h3{letter-spacing:-.03em;}
+  .hero h1{font-size:clamp(40px,7vw,96px);font-weight:700;line-height:.96;letter-spacing:-.045em;max-width:14ch;text-wrap:balance;}
+  .hero.sub h1{font-size:clamp(32px,5vw,60px);}
+  em.k,.k-it{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em;font-size:1.08em;}
+  .hero{background:none;border-bottom:2px solid var(--rule);padding:72px 0 56px;}
+  .hero .slogan{max-width:56ch;}
+  .eyebrow{color:var(--acc-ink);}
+  section{border-bottom:1px solid var(--line);}
+  .sec-head h2{font-weight:700;font-size:clamp(26px,3.6vw,38px);}
+  .card,.op,.band,.dm,.step,.tri,.stage{border-radius:0;box-shadow:none;}
+  .card,.op{border-color:var(--line);}
+  .card:hover,.op:hover{border-color:var(--rule);}
+  .btn,.chip,.aff{border-radius:0;}
+  .btn.primary{background:var(--acc);border-color:var(--acc);}
+  .btn{border:2px solid var(--rule);color:var(--ink);}
+  .btn:hover{transform:none;background:var(--bg2);border-color:var(--rule);color:var(--ink);}
+  .switch{border-radius:0;padding:0;background:var(--panel);border:2px solid var(--rule);gap:0;}
+  .switch a{border-radius:0;padding:5px 11px;border-left:2px solid var(--rule);}
+  .switch a:first-child{border-left:0;}
+  .switch a.on{background:var(--rule);color:var(--bg);}
+  header.nav{border-bottom:2px solid var(--rule);}
+  .brand .dot{border-radius:0;}
+  .navlinks a.on{color:var(--ink);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;}
+  .hardrule{border-top:2px solid var(--rule);}
+  /* proofs strip (above the fold, three verifiable things + updated) */
+  .proofs{display:flex;flex-wrap:wrap;gap:0;border:2px solid var(--rule);margin-top:26px;}
+  .proofs>a,.proofs>span{flex:1 1 180px;padding:12px 16px;border-left:2px solid var(--rule);font-size:13.5px;color:var(--ink);display:flex;flex-direction:column;gap:2px;}
+  .proofs>a:first-child,.proofs>span:first-child{border-left:0;}
+  .proofs a:hover{background:var(--bg2);text-decoration:none;}
+  .proofs .pk{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);}
+  .proofs .pv{font-weight:600;}
+  @media(max-width:700px){.proofs>a,.proofs>span{flex:1 1 100%;border-left:0;border-top:2px solid var(--rule);}.proofs>a:first-child,.proofs>span:first-child{border-top:0;}}
+  /* audience routes (Hick's law; no JS: native <details>) */
+  .routes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:2px solid var(--rule);}
+  @media(max-width:900px){.routes{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.routes{grid-template-columns:1fr;}}
+  .routes details{border-left:2px solid var(--rule);}
+  .routes details:first-child{border-left:0;}
+  @media(max-width:900px){.routes details{border-left:0;border-top:2px solid var(--rule);}.routes details:first-child{border-top:0;}}
+  .routes summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .routes summary::-webkit-details-marker{display:none;}
+  .routes summary::after{content:"+";font-weight:400;color:var(--mut);font-size:18px;}
+  .routes details[open] summary::after{content:"−";}
+  .routes details[open]{background:var(--bg2);}
+  .routes summary>span{display:flex;flex-direction:column;gap:2px;}
+  .routes summary small{font-weight:400;color:var(--mut);font-size:12.5px;}
+  .routes ol{margin:0;padding:0 18px 18px 36px;font-size:14px;color:var(--ink2);}
+  .routes li{margin:6px 0;}
+  /* the route (chain as a map) */
+  .route-svg{width:100%;height:auto;display:block;}
+  .route-path{stroke-dasharray:1600;stroke-dashoffset:1600;animation:travel 2.6s cubic-bezier(.3,.7,.2,1) .2s forwards;}
+  @keyframes travel{to{stroke-dashoffset:0;}}
+  .station{transition:transform .2s ease;transform-box:fill-box;transform-origin:center;}
+  a:hover .station{transform:scale(1.4);}
+  .route-svg a{text-decoration:none;}
+  .route-svg a:hover text{fill:var(--acc-ink);}
+  /* the ring (Atlas peak) */
+  .ringpeak{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;}
+  @media(max-width:900px){.ringpeak{grid-template-columns:1fr;}}
+  .ringpeak svg{width:100%;height:auto;max-width:640px;display:block;margin:0 auto;}
+  .ring-draw{stroke-dasharray:1300;stroke-dashoffset:1300;animation:ringdraw 2.4s cubic-bezier(.2,.7,.2,1) .1s forwards;}
+  @keyframes ringdraw{to{stroke-dashoffset:0;}}
+  .ring-spin{transform-origin:50% 50%;animation:spin 120s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .pin{transition:transform .2s ease;transform-box:fill-box;transform-origin:center;}
+  .ringpeak a:hover .pin{transform:scale(1.35);}
+  .ringpeak a:hover text{fill:var(--acc-ink);}
+  .bridges{display:flex;flex-direction:column;gap:0;border-top:2px solid var(--rule);}
+  .bridge-row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink2);}
+  .bridge-row .n{font-weight:700;color:var(--acc-ink);}
+  .bridge-row b{color:var(--ink);}
+  /* section close = invitation */
+  .invite{display:flex;justify-content:flex-end;margin-top:22px;}
+  .invite a{font-weight:700;border-bottom:2px solid var(--rule);padding-bottom:2px;color:var(--ink);}
+  .invite a:hover{color:var(--acc-ink);border-color:var(--acc);text-decoration:none;}
+  /* scroll reveal — progressive; static when unsupported */
+  @supports (animation-timeline: view()){
+    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%;}
+    @keyframes rise{from{opacity:.15;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .route-path,.ring-draw{animation:none;stroke-dashoffset:0;}
+    .ring-spin{animation:none;}
+    .reveal{animation:none;}
+    *{transition:none !important;}
+  }
+  /* footer with update stamp */
+  footer{border-top:2px solid var(--rule);}
+  .stamp{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut);}
+  details.trace{border:1px solid var(--line);margin-top:10px;}
+  details.trace summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14px;}
+  details.trace[open] summary{border-bottom:1px solid var(--line);}
+  details.trace .body{padding:8px 16px 14px;}
+  .bridge-row .ln{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:2px;}
+  .route-list{display:none;list-style:none;margin:0;padding:0;border:2px solid var(--rule);counter-reset:st;}
+  .route-list li{counter-increment:st;border-top:2px solid var(--rule);}
+  .route-list li:first-child{border-top:0;}
+  .route-list a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:12px 14px;color:var(--ink);text-decoration:none;align-items:baseline;}
+  .route-list a::before{content:counter(st);font-weight:700;color:var(--acc-ink);}
+  .route-list a span{display:block;grid-column:2;font-size:12.5px;color:var(--mut);}
+  .route-list a:hover{background:var(--bg2);}
+  @media(max-width:700px){.route-svg{display:none;}.route-list{display:block;}.ringpeak svg text.lbl{display:none;}}
+
   /* constitutionsplus additions */
   .status{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--acc-ink);
     border:1px solid var(--acc);background:var(--acc-soft);border-radius:100px;padding:5px 13px;}
@@ -300,8 +410,11 @@
   .sig{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px;box-shadow:var(--shadow);}
   .sig .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px;}
   .sig svg{width:100%;height:auto;display:block;color:var(--ink);}
+  .sig a:hover .pin{transform:scale(1.3);}
+  .sig a:hover text{fill:var(--acc-ink);}
   .sig .cap{font-size:12.5px;color:var(--mut);margin-top:10px;}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://constitutionsplus.com/#site", "url": "https://constitutionsplus.com/", "name": "ConstitutionsPlus", "description": "The platform of the Computational Ontology project: constitutions read as complex adaptive systems. Specified, in preparation.", "inLanguage": "en", "dateModified": "2026-09-03", "author": {"@id": "https://luisbourguet.com/#person"}, "isPartOf": {"@type": "ResearchProject", "name": "Computational Ontology", "url": "https://computational-ontology.com/"}}, {"@type": "SoftwareApplication", "@id": "https://constitutionsplus.com/#platform", "name": "ConstitutionsPlus", "applicationCategory": "ResearchApplication", "creativeWorkStatus": "Specified — in preparation", "url": "https://constitutionsplus.com/", "author": {"@id": "https://luisbourguet.com/#person"}, "license": "https://creativecommons.org/licenses/by/4.0/", "isBasedOn": {"@type": "Dataset", "name": "SOCE Codebook v0.1", "identifier": "https://doi.org/10.5281/zenodo.21616892"}}, {"@type": "Person", "@id": "https://luisbourguet.com/#person", "name": "Luis Bourguet", "url": "https://luisbourguet.com/", "sameAs": ["https://orcid.org/0000-0002-4673-4486", "https://github.com/computational-ontology", "https://ontology360.it/", "https://computational-ontology.com/", "https://constitutionsplus.com/"]}]}</script>
 </head>
 <body>
 <header class="nav"><div class="wrap row">
@@ -309,20 +422,25 @@
   <nav class="navlinks" aria-label="Site">
     <a href="#place">Where it sits</a><a href="#problem">Problem</a><a href="#lines">Four lines</a><a href="#functions">Functions</a><a href="#method">Method</a><a href="#visual">Visual layer</a><a href="#tiers">Two tiers</a><a href="#status">Status</a>
   </nav>
+  <span class="pos" title="Link position in the chain"><span class="linkpos" aria-hidden="true"><i></i><i></i><i class="on"></i><i class="on"></i><i></i></span></span>
   <nav class="switch" aria-label="One project, three sites"><a href="https://ontology360.it/" title="ontology360.it — the matrix">Matrix</a><a href="https://computational-ontology.com/" title="computational-ontology.com — the project">Project</a><a class="on" href="index.html" title="constitutionsplus.com — the platform">Platform</a></nav>
 </div></header>
 
 <a id="top"></a>
 <section class="hero" style="padding-top:84px">
   <div class="wrap">
-    <p class="eyebrow">Platform · when computation meets Ontology</p>
-    <h1>Constitutions as complex adaptive systems.</h1>
-    <p class="slogan">ConstitutionsPlus is the platform of the Computational Ontology project: the place where the matrix's grammar and the project's validated systems become an executable instrument — agent-based models, system dynamics and network analysis over constitutional orders, with a governed human verdict at the end of every run.</p>
-    <span class="status">Specified · in preparation — no software released yet</span>
+    <p class="eyebrow">Platform · when computation meets Ontology · links 3–4 of 5</p>
+    <h1>Constitutions as <em class="k">complex</em> adaptive systems.</h1>
+    <p class="slogan">ConstitutionsPlus is the platform of the Computational Ontology project: where the matrix's grammar and the project's validated systems become an executable instrument — agent-based models, system dynamics and network analysis over constitutional orders, with a governed human verdict at the end of every run.</p>
+    <div class="proofs">
+      <span><span class="pk">Status</span><span class="pv">Specified · in preparation · no software released yet</span></span>
+      <a href="https://doi.org/10.5281/zenodo.21616892" target="_blank" rel="noopener"><span class="pk">Validated kernel</span><span class="pv">SOCE Codebook v0.1 · doi:10.5281/zenodo.21616892</span></a>
+      <a href="https://www.constituteproject.org/" target="_blank" rel="noopener"><span class="pk">Corpus</span><span class="pv">Comparative Constitutions Project · Constitute</span></a>
+      <span><span class="pk">Updated</span><span class="pv">3 September 2026</span></span>
+    </div>
     <div class="cta">
       <a class="btn primary" href="#place">Where it sits →</a>
-      <a class="btn" href="https://github.com/computational-ontology/constitutionsplus" target="_blank" rel="noopener">Repository</a>
-      <a class="btn" href="https://ontology360.it/" >The matrix</a>
+      <a class="btn" href="#visual">The visual evidence layer</a>
     </div>
   </div>
 </section>
@@ -348,6 +466,8 @@
       <div class="step fw"><div class="n">Link 5 · never generated here</div><h3>Normative consequence</h3><p>plural democracy — a human judgement</p></div>
     </div>
     <p class="note">The platform occupies links 3 and 4 of the chain. Link 5 is behind a firewall: no simulation output, no user reading and no model ever produces a normative claim; that link is written by a person, and the platform only shows what it rests on.</p>
+    <p class="rule"><b>For the jurist:</b> a simulation here never tells you what the constitution ought to say; it shows which coupling of functions is about to shut into a loop, so that the judgement you make is made earlier and with the record in view.</p>
+    <div class="invite"><a href="#lines">What the platform reads →</a></div>
   </div>
 </section>
 
@@ -384,6 +504,7 @@
     </div>
     <div class="axis"><b>Transversal axis — cooperation and predation.</b> A common dynamic lexicon across the four lines: every coupling between actors, institutions and inscriptions is read as cooperative or predatory, which is what makes the lines comparable by link configuration rather than by ideological content.</div>
     <p class="note">On vocabulary: across the three sites, <em>domain</em> is reserved for the four social domains of the matrix (biological, economic, political, cultural). The four research lines above are therefore called <em>lines</em> here, so that a domain in the matrix and a line in the platform never collide.</p>
+    <div class="invite"><a href="https://doi.org/10.5281/zenodo.21616892" target="_blank" rel="noopener">Read the SOCE codebook →</a></div>
   </div>
 </section>
 
@@ -463,11 +584,11 @@
             <path d="M210 82 Q210 200 150 236" stroke="#0f766e" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#ah)"/>
           </g>
           <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle">
-            <circle cx="210" cy="52" r="17" fill="#0f766e"/><text x="210" y="56" fill="#fff" font-weight="700">I</text><text x="210" y="24" fill="currentColor" font-weight="600">Inscription</text>
-            <circle cx="318" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="318" y="142" fill="#0b5a54" font-weight="700">II</text><text x="372" y="142" fill="currentColor" font-weight="600">Ideology</text>
-            <circle cx="262" cy="246" r="15" fill="#0f766e"/><text x="262" y="250" fill="#fff" font-weight="700">III</text><text x="262" y="284" fill="currentColor" font-weight="600">Imagined community</text>
-            <circle cx="148" cy="246" r="12" fill="#fff" stroke="#0f766e" stroke-width="2"/><text x="148" y="250" fill="#0b5a54" font-weight="700">IV</text><text x="118" y="284" fill="currentColor" font-weight="600">Obedience</text>
-            <circle cx="96" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="96" y="142" fill="#0b5a54" font-weight="700">V</text><text x="48" y="142" fill="currentColor" font-weight="600">Alterity</text>
+            <a href="https://ontology360.it/framework/ferraris.html"><circle class="pin" cx="210" cy="52" r="17" fill="#0f766e"/><text x="210" y="56" fill="#fff" font-weight="700">I</text><text x="210" y="24" fill="currentColor" font-weight="600">Inscription</text></a>
+            <a href="https://ontology360.it/framework/romero.html"><circle class="pin" cx="318" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="318" y="142" fill="#0b5a54" font-weight="700">II</text><text x="372" y="142" fill="currentColor" font-weight="600">Ideology</text></a>
+            <a href="https://ontology360.it/framework/anderson.html"><circle class="pin" cx="262" cy="246" r="15" fill="#0f766e"/><text x="262" y="250" fill="#fff" font-weight="700">III</text><text x="262" y="284" fill="currentColor" font-weight="600">Imagined community</text></a>
+            <a href="https://ontology360.it/book.html#map"><circle class="pin" cx="148" cy="246" r="12" fill="#fff" stroke="#0f766e" stroke-width="2"/><text x="148" y="250" fill="#0b5a54" font-weight="700">IV</text><text x="118" y="284" fill="currentColor" font-weight="600">Obedience</text></a>
+            <a href="https://ontology360.it/framework/todorov.html"><circle class="pin" cx="96" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="96" y="142" fill="#0b5a54" font-weight="700">V</text><text x="48" y="142" fill="currentColor" font-weight="600">Alterity</text></a>
             <text x="230" y="170" fill="#0b5a54" font-size="10" font-style="italic">V→I closure</text>
           </g>
         </svg>
@@ -475,6 +596,7 @@
       </div>
     </div>
     <p class="note">The layer is not decoration on the platform; it is the platform's public face. The exploratory interface, the visualisation of coupled functions and the playable instrument are all built on it, and it serves all four lines with one grammar.</p>
+    <div class="invite"><a href="https://ontology360.it/trace/example.html">See a claim followed back to its record →</a></div>
   </div>
 </section>
 
@@ -494,6 +616,7 @@
     <div class="sec-head" style="margin:34px 0 8px"><h2 style="font-size:19px">Who it is for</h2></div>
     <div class="who"><span>Researchers</span><span>Jurists</span><span>Legislative monitors</span><span>Rights defenders</span><span>Judiciary</span><span>Parliamentarians</span><span>Students</span><span>Citizens</span></div>
     <p class="note">The long-term playable interface renders the coupled constitutional system as a serious game: perturb a function and watch emergence, closure and intervention asymmetry unfold. It is an exploratory-tier instrument by definition — a public-engagement channel and a field test of the governed templates, never a source of verdicts.</p>
+    <div class="invite"><a href="https://ontology360.it/method.html">Method and governance, in full →</a></div>
   </div>
 </section>
 
@@ -523,7 +646,8 @@
 
 <footer><div class="wrap row">
   <span>© 2026 Luis Bourguet · <a href="https://orcid.org/0000-0002-4673-4486" target="_blank" rel="noopener">ORCID 0000-0002-4673-4486</a> · Content licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · Part of the <a href="https://computational-ontology.com/">Computational Ontology</a> project · Hosted on GitHub Pages · <a href="https://github.com/computational-ontology/constitutionsplus" target="_blank" rel="noopener">Source</a></span>
-  <span class="wbtag">White-box practice — no trackers, no dependencies</span>
-</div></footer>
+  <span class="wbtag">White-box practice — no trackers, no third-party code</span>
+</div>
+<div class="wrap" style="margin-top:10px;"><span class="stamp">Updated 3 September 2026 · build 6b01967 · <a href="https://github.com/computational-ontology/constitutionsplus/commits/main" target="_blank" rel="noopener">history</a></span></div></footer>
 </body>
 </html>
