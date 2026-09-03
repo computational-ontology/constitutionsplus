@@ -10,7 +10,7 @@ Single static page (inline CSS, self-hosted fonts in `fonts/` (OFL), no third-pa
 |---|---|
 | `index.html` | The entire site |
 | `404.html` | Not-found page |
-| `favicon.svg` | Icon |
+| `brand/`, `site.webmanifest` | Logo family v2: mark light/dark, sibling marks, favicons, OG image |
 | `CNAME` | Custom domain |
 | `robots.txt`, `sitemap.xml` | Crawling |
 
