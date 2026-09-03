@@ -1,7 +1,527 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ConstitutionsPlus — constitutions as complex adaptive systems</title>
-<meta name="description" content="ConstitutionsPlus is the platform of the Computational Ontology project: constitutions read as complex adaptive systems — agent-based models, system dynamics and network analysis, with a playable interface. In preparation.">
-<style>body{margin:0;font:400 16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#0f1a24;background:#fff}.wrap{max-width:760px;margin:0 auto;padding:96px 24px}a{color:#0f766e}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0b5a54;margin:0 0 12px}h1{font-size:clamp(30px,5vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0 0 18px}p{color:#5a6b7b;font-size:18px;max-width:60ch}.switch{display:inline-flex;border:1px solid #e4e9ee;border-radius:100px;padding:3px;background:#f7f9fb;font-size:12px;font-weight:600;margin-top:28px}.switch a{padding:4px 11px;border-radius:100px;color:#5a6b7b;text-decoration:none}.switch a.on{background:#0f766e;color:#fff}footer{margin-top:64px;font-size:13.5px;color:#5a6b7b}</style></head>
-<body><div class="wrap"><p class="eyebrow">Platform · in preparation</p><h1>Constitutions as complex adaptive systems.</h1>
-<p>ConstitutionsPlus is where the matrix is played: agent-based models, system dynamics and network analysis over constitutional systems, with a long-term playable interface. The platform is being built; the project and the matrix are open.</p>
-<nav class="switch" aria-label="One project, three sites"><a href="https://ontology360.it/">Matrix</a><a href="https://computational-ontology.com/">Project</a><a class="on" href="/">Platform</a></nav>
-<footer>© 2026 Luis Bourguet · <a href="https://orcid.org/0000-0002-4673-4486">ORCID 0000-0002-4673-4486</a> · Part of <a href="https://computational-ontology.com/">Computational Ontology</a> · Hosted on GitHub Pages</footer></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConstitutionsPlus — constitutions as complex adaptive systems</title>
+<meta name="description" content="ConstitutionsPlus is the platform of the Computational Ontology project: constitutions read as complex adaptive systems — agent-based models, system dynamics and network analysis over constitutional orders, with a governed human verdict. Specified, in preparation.">
+<link rel="canonical" href="https://constitutionsplus.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="ConstitutionsPlus — constitutions as complex adaptive systems">
+<meta property="og:description" content="ConstitutionsPlus is the platform of the Computational Ontology project: constitutions read as complex adaptive systems — agent-based models, system dynamics and network analysis over constitutional orders, with a governed human verdict. Specified, in preparation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://constitutionsplus.com/">
+<meta name="theme-color" content="#0f766e">
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#f7f9fb; --panel:#ffffff; --ink:#0f1a24; --ink2:#28323d;
+    --mut:#5a6b7b; --line:#e4e9ee; --line2:#eef2f6;
+    --acc:#0f766e; --acc2:#0d9488; --acc-soft:#e6f4f1; --acc-ink:#0b5a54;
+    --shadow:0 1px 2px rgba(15,26,36,.04),0 8px 24px rgba(15,26,36,.05);
+    --max:1120px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0a0e13; --bg2:#0d131a; --panel:#111822; --ink:#e8eef4; --ink2:#c9d4de;
+      --mut:#8a9bab; --line:#1e2833; --line2:#182029;
+      --acc:#2dd4bf; --acc2:#5eead4; --acc-soft:#0f2a27; --acc-ink:#7ff0e2;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:70px;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;letter-spacing:-.005em;}
+  a{color:var(--acc);text-decoration:none;}
+  a:hover{text-decoration:underline;text-underline-offset:3px;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{letter-spacing:-.02em;line-height:1.15;color:var(--ink);}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:0 0 12px;}
+  .lead{color:var(--mut);font-size:17px;}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);}
+  .nav .row{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;color:var(--ink);font-size:15.5px;}
+  .brand .dot{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--acc),var(--acc2));
+    display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;}
+  .navlinks{display:flex;gap:26px;font-size:14px;}
+  .navlinks a{color:var(--mut);font-weight:500;}
+  .navlinks a:hover{color:var(--ink);text-decoration:none;}
+  @media(max-width:820px){.navlinks{display:none;}}
+
+  /* hero */
+  .hero{padding:84px 0 64px;background:
+    radial-gradient(900px 380px at 78% -8%,var(--acc-soft),transparent 70%);
+    border-bottom:1px solid var(--line);}
+  .hero .eyebrow{color:var(--acc-ink);}
+  .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;margin:0 0 20px;max-width:16ch;}
+  .hero .slogan{font-size:clamp(16px,2.2vw,20px);color:var(--mut);max-width:60ch;margin:0 0 28px;line-height:1.55;}
+  .aff{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--mut);
+    border:1px solid var(--line);background:var(--panel);border-radius:100px;padding:7px 15px;}
+  .aff b{color:var(--ink2);font-weight:600;}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;
+    border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink);transition:.15s;}
+  .btn:hover{text-decoration:none;border-color:var(--acc);color:var(--acc-ink);transform:translateY(-1px);}
+  .btn.primary{background:var(--acc);border-color:var(--acc);color:#fff;}
+  .btn.primary:hover{background:var(--acc2);border-color:var(--acc2);color:#04231f;}
+
+  /* section scaffolding */
+  section{padding:64px 0;border-bottom:1px solid var(--line2);}
+  .sec-head{max-width:64ch;margin:0 0 34px;}
+  .sec-head h2{font-size:clamp(22px,3.2vw,30px);font-weight:750;margin:0 0 12px;}
+  .sec-head p{margin:0;color:var(--mut);font-size:16.5px;}
+
+  /* architecture diagram */
+  .arch{display:flex;flex-direction:column;gap:0;}
+  .band{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px 18px;box-shadow:var(--shadow);}
+  .band .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+  .band .v{font-weight:700;font-size:17px;margin-top:2px;}
+  .band .d{color:var(--mut);font-size:13.5px;margin-top:3px;}
+  .band.program{border-color:var(--acc);background:linear-gradient(180deg,var(--acc-soft),transparent);}
+  .band.program .v{color:var(--acc-ink);}
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:760px){.flow{grid-template-columns:1fr;}}
+  .conn{height:26px;display:flex;align-items:center;justify-content:center;color:var(--mut);}
+  .conn::before{content:"";width:1px;height:100%;background:var(--line);}
+  .platform{border-color:var(--acc2);}
+  .platform .v{color:var(--acc-ink);}
+  .tag{display:inline-block;font-size:11px;font-weight:600;color:var(--acc-ink);background:var(--acc-soft);
+    border:1px solid var(--acc);border-radius:100px;padding:1px 9px;margin-left:6px;vertical-align:middle;}
+
+  /* cards */
+  .grid{display:grid;gap:16px;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:22px;box-shadow:var(--shadow);}
+  .card h3{font-size:18px;font-weight:700;margin:0 0 8px;}
+  .card p{margin:0;color:var(--mut);font-size:15px;}
+  .card .meta{font-size:12.5px;color:var(--acc-ink);font-weight:600;margin-top:12px;letter-spacing:.02em;}
+
+  /* triad */
+  .triad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:820px){.triad{grid-template-columns:1fr;}}
+  .tri{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px;border-top:3px solid var(--acc);box-shadow:var(--shadow);}
+  .tri .n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+  .tri h3{font-size:18px;margin:2px 0 2px;}
+  .tri .sub{font-size:13px;color:var(--acc-ink);font-weight:600;margin-bottom:10px;}
+  .tri ul{margin:0;padding:0;list-style:none;}
+  .tri li{font-size:13.5px;color:var(--mut);padding:5px 0;border-top:1px solid var(--line2);}
+  .tri li:first-child{border-top:none;}
+  .bridge{margin-top:16px;text-align:center;font-size:13.5px;color:var(--mut);}
+  .bridge b{color:var(--acc-ink);}
+
+  /* domains */
+  .domns{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;}
+  @media(max-width:820px){.domns{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.domns{grid-template-columns:1fr;}}
+  .dm{border:1px solid var(--line);border-radius:12px;background:var(--bg2);padding:14px;}
+  .dm .t{font-weight:700;font-size:15px;}
+  .dm .e{font-size:12.5px;color:var(--acc-ink);font-weight:600;margin:2px 0 6px;}
+  .dm .p{font-size:12.5px;color:var(--mut);}
+
+  /* two-tier / whitebox split */
+  .split .card{border-left:3px solid var(--acc);}
+
+  /* publications */
+  .pubs{display:grid;gap:10px;}
+  .pub{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;
+    background:var(--panel);padding:16px 18px;transition:.15s;}
+  .pub:hover{border-color:var(--acc);}
+  .pub .badge{flex:none;font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:100px;
+    background:var(--acc-soft);color:var(--acc-ink);border:1px solid var(--acc);margin-top:2px;}
+  .pub .t{font-weight:600;font-size:15px;color:var(--ink);}
+  .pub .doi{font-size:12.5px;color:var(--mut);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+  /* infra + affil buttons */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:10px 16px;
+    border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);transition:.15s;}
+  .chip:hover{border-color:var(--acc);color:var(--acc-ink);text-decoration:none;transform:translateY(-1px);}
+  .chip small{font-weight:400;color:var(--mut);}
+
+  /* knowledge pipeline */
+  .pipe{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;}
+  .step{flex:1 1 168px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:15px 16px;box-shadow:var(--shadow);}
+  .step .n{font-size:10.5px;font-weight:700;color:var(--acc-ink);letter-spacing:.05em;text-transform:uppercase;}
+  .step h3{font-size:15px;margin:4px 0 6px;}
+  .step p{font-size:12.5px;color:var(--mut);margin:0;}
+  .arrowh{display:flex;align-items:center;justify-content:center;color:var(--mut);padding:0 7px;font-size:18px;}
+  @media(max-width:820px){.arrowh{transform:rotate(90deg);width:100%;padding:8px 0;}.step{flex:1 1 100%;}}
+  /* publication roads */
+  .roads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 14px;}
+  @media(max-width:820px){.roads{grid-template-columns:1fr;}}
+  .road{position:relative;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:22px 20px 20px;overflow:hidden;box-shadow:var(--shadow);}
+  .road::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;}
+  .road.diamond::before{background:linear-gradient(90deg,#22d3ee,#a5f3fc);}
+  .road.gold::before{background:linear-gradient(90deg,#fbbf24,#f59e0b);}
+  .road.green::before{background:linear-gradient(90deg,#34d399,#22c55e);}
+  .road .rd{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;}
+  .road.diamond .rd{color:#0e9cbb;} .road.gold .rd{color:#bd8a2b;} .road.green .rd{color:#1a9d4d;}
+  .road h3{font-size:16px;margin:5px 0 6px;}
+  .road p{font-size:13px;color:var(--mut);margin:0 0 10px;}
+  .road .on{font-size:12px;color:var(--ink2);border-top:1px solid var(--line2);padding-top:9px;}
+  .roads-cap{font-size:13px;color:var(--mut);margin:0 0 26px;font-style:italic;}
+
+  /* hero media + card logo */
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center;}
+  .hero-media img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow);display:block;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px;}.hero-media{margin-top:4px;}}
+  .card-logo{display:inline-block;background:#fbfaf7;border:1px solid var(--line);border-radius:10px;padding:7px 13px;margin-bottom:14px;}
+  .card-logo img{display:block;height:34px;width:auto;}
+
+  /* per-object road indicators */
+  .pub.road-diamond{border-left:4px solid #22d3ee;}
+  .pub.road-gold{border-left:4px solid #f59e0b;}
+  .pub.road-green{border-left:4px solid #22c55e;}
+  .roadtag{margin-left:auto;align-self:center;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+    font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:100px;border:1px solid;}
+  .roadtag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none;}
+  .rt-diamond{color:#0b93b0;border-color:#22d3ee;background:rgba(34,211,238,.10);}
+  .rt-gold{color:#b7791f;border-color:#f59e0b;background:rgba(245,158,11,.13);}
+  .rt-green{color:#178a44;border-color:#22c55e;background:rgba(34,197,94,.13);}
+  @media(prefers-color-scheme:dark){.rt-diamond{color:#67e8f9;}.rt-gold{color:#fbbf24;}.rt-green{color:#6ee7a8;}}
+
+  /* footer */
+  footer{padding:40px 0 56px;color:var(--mut);font-size:13.5px;}
+  footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;}
+  .wbtag{display:inline-flex;align-items:center;gap:7px;font-weight:600;color:var(--acc-ink);}
+  .wbtag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);}
+
+  /* ontology360 extensions: cross-site switch, link position, statement states, trace records */
+  :root{--datum:#0f766e; --interp:#b7791f; --norm:#7c3aed;}
+  @media (prefers-color-scheme: dark){:root{--interp:#fbbf24; --norm:#c4b5fd;}}
+  .switch{display:inline-flex;border:1px solid var(--line);border-radius:100px;padding:3px;background:var(--bg2);font-size:12px;font-weight:600;}
+  .switch a{padding:4px 11px;border-radius:100px;color:var(--mut);}
+  .switch a:hover{text-decoration:none;color:var(--ink);}
+  .switch a.on{background:var(--acc);color:#fff;}
+  @media(max-width:520px){.switch a{padding:4px 8px;}}
+  .navlinks a.on{color:var(--ink);}
+  .state{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 11px;border-radius:100px;border:1px solid;white-space:nowrap;}
+  .state::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none;}
+  .st-datum{color:var(--datum);border-color:var(--datum);background:rgba(15,118,110,.08);}
+  .st-interp{color:var(--interp);border-color:#f59e0b;background:rgba(245,158,11,.13);}
+  .st-norm{color:var(--norm);border-color:#a78bfa;background:rgba(124,58,237,.08);}
+  .linkpos{display:inline-flex;align-items:center;gap:4px;vertical-align:middle;}
+  .linkpos i{display:block;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--acc);background:transparent;}
+  .linkpos i.on{background:var(--acc);}
+  .pos{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--acc-ink);}
+  .tid{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--acc-ink);background:var(--acc-soft);border:1px solid var(--acc);border-radius:6px;padding:1px 7px;white-space:nowrap;}
+  .field{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line2);font-size:14px;}
+  @media(max-width:640px){.field{grid-template-columns:1fr;gap:4px;}}
+  .field .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding-top:3px;}
+  .field .v{color:var(--ink2);}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .crumbs{border-bottom:1px solid var(--line);background:var(--bg2);}
+  .crumbs .row{display:flex;align-items:center;justify-content:space-between;min-height:44px;font-size:13px;color:var(--mut);gap:12px;flex-wrap:wrap;padding:6px 0;}
+  .ring{display:flex;justify-content:center;}
+  .ring svg{max-width:100%;height:auto;}
+  .g5{grid-template-columns:repeat(5,1fr);}
+  @media(max-width:1000px){.g5{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:640px){.g5{grid-template-columns:1fr;}}
+  table{border-collapse:collapse;width:100%;font-size:14px;}
+  th{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);}
+  td{padding:12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2);}
+  td.c{font-weight:600;color:var(--ink);}
+  .tablewrap{overflow-x:auto;}
+  .op{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:22px;box-shadow:var(--shadow);}
+  .op h3{font-size:18px;margin:0 0 4px;}
+  .op .who{font-size:12.5px;color:var(--acc-ink);font-weight:600;margin-bottom:8px;}
+  .op p{margin:0;color:var(--mut);font-size:14.5px;}
+  .op .does{margin-top:10px;font-size:13px;color:var(--ink2);border-top:1px solid var(--line2);padding-top:8px;}
+  .op .does b{color:var(--acc-ink);}
+  .legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--mut);margin-top:18px;}
+  pre{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--ink2);}
+  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:820px){.kv{grid-template-columns:1fr;}}
+  .quiet{font-size:13px;color:var(--mut);}
+  .hero.sub{padding:56px 0 44px;}
+  .hero.sub h1{font-size:clamp(28px,4.2vw,44px);}
+
+  /* constitutionsplus additions */
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--acc-ink);
+    border:1px solid var(--acc);background:var(--acc-soft);border-radius:100px;padding:5px 13px;}
+  .status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);}
+  .scales{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:820px){.scales{grid-template-columns:1fr;}}
+  .scale{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px;box-shadow:var(--shadow);}
+  .scale.on{border-color:var(--acc);background:linear-gradient(180deg,var(--acc-soft),transparent);}
+  .scale .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+  .scale h3{font-size:18px;margin:4px 0 6px;}
+  .scale p{margin:0;color:var(--mut);font-size:14px;}
+  .scale .dom{margin-top:10px;font-size:12.5px;font-weight:600;color:var(--acc-ink);}
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:22px;}
+  .chain .step.here{border-color:var(--acc);background:linear-gradient(180deg,var(--acc-soft),transparent);}
+  .chain .step.fw{border-style:dashed;}
+  .lines{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media(max-width:1000px){.lines{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.lines{grid-template-columns:1fr;}}
+  .line{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;}
+  .line .n{font-size:10.5px;font-weight:700;color:var(--acc-ink);letter-spacing:.05em;text-transform:uppercase;}
+  .line h3{font-size:17px;margin:0;}
+  .line .sys{font-size:13px;font-weight:600;color:var(--ink2);}
+  .line p{margin:0;color:var(--mut);font-size:13.5px;flex:1;}
+  .line .st{margin-top:6px;}
+  .axis{margin-top:14px;border:1px dashed var(--acc);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink2);background:var(--bg2);}
+  .axis b{color:var(--acc-ink);}
+  .fn{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:820px){.fn{grid-template-columns:1fr;}}
+  .fn .dm .t{font-size:14.5px;}
+  .method{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media(max-width:1000px){.method{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.method{grid-template-columns:1fr;}}
+  .rule{border-left:3px solid var(--acc);padding:4px 0 4px 16px;margin:22px 0 0;font-size:15.5px;color:var(--ink2);}
+  .rule b{color:var(--acc-ink);}
+  .tiers{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:820px){.tiers{grid-template-columns:1fr;}}
+  .axes .field{grid-template-columns:56px minmax(0,1fr);}
+  .axes .field .k{font-size:13px;color:var(--acc-ink);letter-spacing:0;text-transform:none;}
+  .road-map{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:820px){.road-map{grid-template-columns:1fr;}}
+  .stage{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 20px;}
+  .stage .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+  .stage h3{font-size:16px;margin:4px 0 8px;}
+  .stage ul{margin:0;padding-left:18px;color:var(--mut);font-size:13.5px;}
+  .stage li{margin:3px 0;}
+  .stage.now{border-color:var(--acc);}
+  .who{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .who span{font-size:13px;border:1px solid var(--line);border-radius:100px;padding:5px 12px;background:var(--panel);color:var(--ink2);}
+  .note{font-size:13px;color:var(--mut);margin-top:14px;}
+  .vis{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start;}
+  @media(max-width:900px){.vis{grid-template-columns:1fr;}}
+  .vis .card p{font-size:14.5px;}
+  .vis .card+.card{margin-top:12px;}
+  .sig{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px;box-shadow:var(--shadow);}
+  .sig .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px;}
+  .sig svg{width:100%;height:auto;display:block;color:var(--ink);}
+  .sig .cap{font-size:12.5px;color:var(--mut);margin-top:10px;}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap row">
+  <a class="brand" href="index.html"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg></span><span>ConstitutionsPlus</span></a>
+  <nav class="navlinks" aria-label="Site">
+    <a href="#place">Where it sits</a><a href="#problem">Problem</a><a href="#lines">Four lines</a><a href="#functions">Functions</a><a href="#method">Method</a><a href="#visual">Visual layer</a><a href="#tiers">Two tiers</a><a href="#status">Status</a>
+  </nav>
+  <nav class="switch" aria-label="One project, three sites"><a href="https://ontology360.it/" title="ontology360.it — the matrix">Matrix</a><a href="https://computational-ontology.com/" title="computational-ontology.com — the project">Project</a><a class="on" href="index.html" title="constitutionsplus.com — the platform">Platform</a></nav>
+</div></header>
+
+<a id="top"></a>
+<section class="hero" style="padding-top:84px">
+  <div class="wrap">
+    <p class="eyebrow">Platform · when computation meets Ontology</p>
+    <h1>Constitutions as complex adaptive systems.</h1>
+    <p class="slogan">ConstitutionsPlus is the platform of the Computational Ontology project: the place where the matrix's grammar and the project's validated systems become an executable instrument — agent-based models, system dynamics and network analysis over constitutional orders, with a governed human verdict at the end of every run.</p>
+    <span class="status">Specified · in preparation — no software released yet</span>
+    <div class="cta">
+      <a class="btn primary" href="#place">Where it sits →</a>
+      <a class="btn" href="https://github.com/computational-ontology/constitutionsplus" target="_blank" rel="noopener">Repository</a>
+      <a class="btn" href="https://ontology360.it/" >The matrix</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE IT SITS -->
+<section id="place">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Where it sits</p>
+      <h2>One research line, three scales.</h2>
+      <p>The same chain of five links runs through all three sites. The matrix states it; the project derives and validates systems from it; the platform executes those systems as a coupled model and hands the result back to a human.</p>
+    </div>
+    <div class="scales">
+      <div class="scale"><div class="k">Scale 1 · Matrix</div><h3><a href="https://ontology360.it/">Ontology 360</a></h3><p>The grammar: being / knowing, the register as operator of identity and belonging, the four social domains, the constitution as meta-register. Also home of the book manuscript and its open companion data.</p><div class="dom">ontology360.it</div></div>
+      <div class="scale"><div class="k">Scale 2 · Project</div><h3><a href="https://computational-ontology.com/">Computational Ontology</a></h3><p>The systems derived from the grammar and validated on corpora: SOCE (the exclusion cycle) and EMERGENZA (constitutional endurance), with their codebooks, preregistration and deposits.</p><div class="dom">computational-ontology.com</div></div>
+      <div class="scale on"><div class="k">Scale 3 · Platform</div><h3>ConstitutionsPlus</h3><p>The instrument: the validated systems lifted to the whole constitutional order, read as a complex adaptive system, simulated under counterfactual pressure, and played — never as a source of canonical verdicts.</p><div class="dom">constitutionsplus.com</div></div>
+    </div>
+    <div class="chain pipe">
+      <div class="step"><div class="n">Link 1</div><h3>Circumstance</h3><p>being · the in-emendable</p></div><div class="arrowh">→</div>
+      <div class="step"><div class="n">Link 2</div><h3>Register</h3><p>inscription · identity · belonging</p></div><div class="arrowh">→</div>
+      <div class="step here"><div class="n">Link 3 · platform reads</div><h3>Domains · domination</h3><p>who controls the inscription; closure loops</p></div><div class="arrowh">→</div>
+      <div class="step here"><div class="n">Link 4 · platform simulates</div><h3>Constitutional architecture</h3><p>CCP-compatible units; coupled functions</p></div><div class="arrowh">→</div>
+      <div class="step fw"><div class="n">Link 5 · never generated here</div><h3>Normative consequence</h3><p>plural democracy — a human judgement</p></div>
+    </div>
+    <p class="note">The platform occupies links 3 and 4 of the chain. Link 5 is behind a firewall: no simulation output, no user reading and no model ever produces a normative claim; that link is written by a person, and the platform only shows what it rests on.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The research problem</p>
+      <h2>A constitution is not only a hierarchy of norms.</h2>
+      <p>Constitutional theory reads a constitution as a static pyramid of sources to be interpreted, or as a legal-historical object to be described case by case. Both capture the consolidated structure and miss what the order demonstrably is in operation.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><h3>Emergence &amp; downward causation</h3><p>A macro-order not present in any single actor or article, which then conditions which micro-behaviours may update next.</p></div>
+      <div class="card"><h3>Nonlinearity &amp; tipping points</h3><p>Episodic strain that suddenly becomes self-sustaining — a closure loop that shuts, after which only multi-nodal intervention works.</p></div>
+      <div class="card"><h3>Path dependence &amp; multiple realisation</h3><p>Ratchets that do not relax on their own, and the same macro-outcome reached from opposite micro-configurations — structural invariance to content.</p></div>
+    </div>
+    <p class="rule"><b>The generalisation gap.</b> The project has validated single-domain cycles of exactly this kind. There is no integrated instrument yet that reads a constitutional system <em>as a whole</em> as a complex adaptive system, on a common ontological footing, with a reproducible structural notation and a governed simulation layer that moves from diagnosis (what the system is) through prospection (where it is tending) to controlled simulation (what it would do under pressure). ConstitutionsPlus is specified to be that instrument.</p>
+  </div>
+</section>
+
+<!-- FOUR LINES -->
+<section id="lines">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Four curated lines</p>
+      <h2>What the platform reads.</h2>
+      <p>Each line is a curated scientific script — a system with its own corpus, codebook and validation history — that the platform executes. Two exist; two are named and awaiting specification.</p>
+    </div>
+    <div class="lines">
+      <div class="line"><div class="n">Line 1 · Exclusion</div><h3>SOCE</h3><div class="sys">Social-Ontological Cycle of Exclusion</div><p>Five nodes (inscription · ideology · imagined community · obedience · alterity), an eleven-link catalogue, a structural signature Φ = ⟨σ, V, E⟩, eleven historical cases in five topological families, descriptive and prospective modules (SOCE-D / SOCE-P).</p><div class="st"><span class="state st-datum">Validated · codebook v0.1 deposited</span></div></div>
+      <div class="line"><div class="n">Line 2 · Endurance</div><h3>EMERGENZA</h3><div class="sys">Constitutional endurance and replacement</div><p>Constitutions as transgenerational objects; survival analysis, contagion and agent models over the Comparative Constitutions Project record (1789–), with a transgenerational index calibrated on adaptability, flexibility and durability.</p><div class="st"><span class="state st-interp">Specified · script to be built</span></div></div>
+      <div class="line"><div class="n">Line 3 · Transgenerationality</div><h3>Obligations across time</h3><div class="sys">After Tiziana Andina</div><p>Institutions carry obligations between generations; the constitution as promise and as world-artifice that outlives its founders. To be specified as its own curated line.</p><div class="st"><span class="state st-interp">Named · to be specified</span></div></div>
+      <div class="line"><div class="n">Line 4 · New Realism</div><h3>The in-emendable order</h3><div class="sys">After Maurizio Ferraris</div><p>What in the order is unamendable-as-inscribed and what is amendable-as-interpreted; documentality as the mode in which constitutional facts acquire durability. To be specified as its own curated line.</p><div class="st"><span class="state st-interp">Named · to be specified</span></div></div>
+    </div>
+    <div class="axis"><b>Transversal axis — cooperation and predation.</b> A common dynamic lexicon across the four lines: every coupling between actors, institutions and inscriptions is read as cooperative or predatory, which is what makes the lines comparable by link configuration rather than by ideological content.</div>
+    <p class="note">On vocabulary: across the three sites, <em>domain</em> is reserved for the four social domains of the matrix (biological, economic, political, cultural). The four research lines above are therefore called <em>lines</em> here, so that a domain in the matrix and a line in the platform never collide.</p>
+  </div>
+</section>
+
+<!-- FUNCTIONS -->
+<section id="functions" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Six constitutional functions</p>
+      <h2>How the order is decomposed inside a line.</h2>
+      <p>Within the constitutional region, the platform reads six coupled functions. They are not silos: legitimacy feeds membership, emergency rewrites sources and stresses endurance, and an exclusion closure can consolidate the "We" that re-inscribes the founding act. The object is the coupled network, not six separate analyses.</p>
+    </div>
+    <div class="fn">
+      <div class="dm"><div class="t">Foundational inscription &amp; sources</div><div class="e">documentality · founding act</div><div class="p">How the order is inscribed and re-inscribed; what counts as constitutional fact.</div></div>
+      <div class="dm"><div class="t">Rights, membership &amp; the Other</div><div class="e">SOCE kernel</div><div class="p">How the "We" is bounded and the Other is included, fixed or erased.</div></div>
+      <div class="dm"><div class="t">Powers &amp; institutional architecture</div><div class="e">meso-level network</div><div class="p">How competences are distributed and institutions co-adapt.</div></div>
+      <div class="dm"><div class="t">Legitimacy &amp; obedience</div><div class="e">compliance modes</div><div class="p">Why the order is complied with and where compliance breaks.</div></div>
+      <div class="dm"><div class="t">Emergency, exception &amp; crisis</div><div class="e">stress behaviour</div><div class="p">Concentration of power, suspension of guarantees, the return (or not) to the status quo ante.</div></div>
+      <div class="dm"><div class="t">Endurance, amendment &amp; replacement</div><div class="e">EMERGENZA kernel · CCP</div><div class="p">How the order persists, amends or dies across time.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Method</p>
+      <h2>Three layers on one object, governed by one constraint.</h2>
+      <p>The simulation core turns each line's structural signature into an executable model. The methods are complementary layers, not alternatives; a transversal layer of nonlinear mathematics reads closure as a phase transition.</p>
+    </div>
+    <div class="method">
+      <div class="card"><h3>Agent-based modelling</h3><p>Citizens, officials and factions act under adaptive rules; compliance modes, membership boundaries and institutional behaviour emerge from the bottom up. Natality enters as rule-innovation.</p><div class="meta">emergence · relations · agency</div></div>
+      <div class="card"><h3>System dynamics</h3><p>Stocks and flows of the order: reinforcing loops (closures), balancing loops (checks, endurance mechanisms), ratchets and hysteresis.</p><div class="meta">temporality · feedback</div></div>
+      <div class="card"><h3>Network analysis</h3><p>The coupled topology of functions and links; centrality, community structure, topological families — compared by link configuration, never by ideological content.</p><div class="meta">relational primacy</div></div>
+      <div class="card"><h3>Nonlinear mathematics</h3><p>Bifurcations and tipping points, path dependence, sensitivity to initial conditions — the early-warning reading of a loop that is about to shut.</p><div class="meta">transversal</div></div>
+    </div>
+    <p class="rule"><b>Master constraint.</b> If it cannot be read from a diagnosis, it does not enter the model. Resolution is declared and governed — ordinal and qualitative where the phenomenon is qualitative; no magnitude enters that a diagnosis cannot support. Reality, through retrodiction against known outcomes, is the judge.</p>
+
+    <div class="sec-head" style="margin:40px 0 10px"><h2 style="font-size:19px">Six design axes every model must declare</h2></div>
+    <div class="axes">
+      <div class="field"><div class="k">A1</div><div class="v"><b>Multi-level emergence and downward causation</b> — micro-actors, meso-institutions, macro-order; the closure loop as the macro-bond that filters the next iteration.</div></div>
+      <div class="field"><div class="k">A2</div><div class="v"><b>Ontological hardness vs interpretive amendability</b> — what resists as inscribed, what is contested as interpreted; neither formalist rigidity nor constructivist dissolution.</div></div>
+      <div class="field"><div class="k">A3</div><div class="v"><b>Level of abstraction</b> — the modelling resolution is declared and fit for purpose; the master constraint lives here.</div></div>
+      <div class="field"><div class="k">A4</div><div class="v"><b>Relational primacy</b> — relations before nodes; the unit of analysis is the link configuration.</div></div>
+      <div class="field"><div class="k">A5</div><div class="v"><b>Temporality and feedback</b> — cyclical, durable and unpredictable time co-modelled as stocks, flows and loops; ratchets made explicit.</div></div>
+      <div class="field"><div class="k">A6</div><div class="v"><b>Adaptation and agency</b> — agents adapt rules under selection; the capacity to begin is never foreclosed; the seam where a governed intervention is still possible is located here.</div></div>
+    </div>
+    <p class="note">Two results carry over from the validated lines as platform-wide expectations: <em>multiple realisation</em> (the same outcome on opposite bases) and <em>intervention asymmetry</em> (before closure one link may suffice; after closure only simultaneous multi-nodal intervention works) — the platform's most consequential practical output.</p>
+  </div>
+</section>
+
+<!-- VISUAL EVIDENCE LAYER -->
+<section id="visual" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Visual evidence layer</p>
+      <h2>Made legible, not persuasive.</h2>
+      <p>The research question has three clauses: can exclusion be formalised as a cycle; does the cycle have reproducible topological properties; and can its detection be made legible for democratic practice? The visual layer is the instrument of the third clause. It is what turns a structural signature into something a jurist, a monitor or a citizen can read, check and disagree with.</p>
+    </div>
+    <div class="vis">
+      <div>
+        <div class="card"><h3>Evidence, not advocacy</h3><p>The layer follows evidence-presentation and visual-forensic practice — the tradition of Forensic Architecture — rather than data-storytelling. A picture here is a reconstruction: it shows what the coded record contains, in the order it was inscribed, and nothing the record does not support.</p></div>
+        <div class="card"><h3>Symmetric structure</h3><p>The notation has no majority baseline: the same rubrics apply whichever group is the "We" and whichever is the Other. The visual grammar is symmetric accordingly — the picture cannot be tilted by the ideological content of the case, only by its link configuration.</p></div>
+        <div class="card"><h3>Per-element provenance</h3><p>Every node, link and intensity drawn on screen carries its provenance: the source span, the coder or model that proposed it, the human who validated it, the codebook version, and its state — datum, interpretation, or a normative claim that the platform never draws. Legibility means being able to follow any element back to its inscription.</p></div>
+        <div class="card"><h3>Legibility is a test, not a style</h3><p>A reading counts as legible when practitioners in different institutions, working from the deposited pack, its visual layer and an open model stack, independently reproduce it. The picture is validated the same way the diagnosis is: by reproduction, not by approval.</p></div>
+      </div>
+      <div class="sig">
+        <div class="k">What a signature looks like — schematic</div>
+        <svg viewBox="0 0 420 300" role="img" aria-label="Schematic of a five-node structural signature: inscription, ideology, imagined community, obedience, alterity, with the recursive closure from alterity back to inscription; link weights drawn as line thickness; every element linked to its provenance.">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5 0 10z" fill="#5a6b7b"/></marker></defs>
+          <g stroke="#5a6b7b" fill="none" stroke-linecap="round">
+            <path d="M210 62 L306 128" stroke-width="3" marker-end="url(#ah)"/>
+            <path d="M310 150 L274 232" stroke-width="2" marker-end="url(#ah)"/>
+            <path d="M250 246 L160 246" stroke-width="4" marker-end="url(#ah)"/>
+            <path d="M136 232 L102 150" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+            <path d="M110 128 L192 66" stroke-width="2" marker-end="url(#ah)"/>
+            <path d="M210 82 Q210 200 150 236" stroke="#0f766e" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#ah)"/>
+          </g>
+          <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle">
+            <circle cx="210" cy="52" r="17" fill="#0f766e"/><text x="210" y="56" fill="#fff" font-weight="700">I</text><text x="210" y="24" fill="currentColor" font-weight="600">Inscription</text>
+            <circle cx="318" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="318" y="142" fill="#0b5a54" font-weight="700">II</text><text x="372" y="142" fill="currentColor" font-weight="600">Ideology</text>
+            <circle cx="262" cy="246" r="15" fill="#0f766e"/><text x="262" y="250" fill="#fff" font-weight="700">III</text><text x="262" y="284" fill="currentColor" font-weight="600">Imagined community</text>
+            <circle cx="148" cy="246" r="12" fill="#fff" stroke="#0f766e" stroke-width="2"/><text x="148" y="250" fill="#0b5a54" font-weight="700">IV</text><text x="118" y="284" fill="currentColor" font-weight="600">Obedience</text>
+            <circle cx="96" cy="138" r="14" fill="#e6f4f1" stroke="#0f766e" stroke-width="2"/><text x="96" y="142" fill="#0b5a54" font-weight="700">V</text><text x="48" y="142" fill="currentColor" font-weight="600">Alterity</text>
+            <text x="230" y="170" fill="#0b5a54" font-size="10" font-style="italic">V→I closure</text>
+          </g>
+        </svg>
+        <div class="cap">Node size = ordinal intensity (L/P/D/E); line weight = link state (inactive · active · dominant · modulated · accelerating); the dashed teal edge is the recursive closure that turns episodic strain into a self-sustaining cycle. In the platform every element is clickable back to its provenance record. Schematic only — not a coded case.</div>
+      </div>
+    </div>
+    <p class="note">The layer is not decoration on the platform; it is the platform's public face. The exploratory interface, the visualisation of coupled functions and the playable instrument are all built on it, and it serves all four lines with one grammar.</p>
+  </div>
+</section>
+
+<!-- TWO TIERS -->
+<section id="tiers">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The two-tier rule</p>
+      <h2>AI proposes, the human decides.</h2>
+      <p>The rule is not a compliance slogan: it follows from the standpoint. The observer is an existing, plural being, and the capacity to begin something new is precisely what no simulation forecloses. That is the ontological reason the canonical verdict is always human-validated.</p>
+    </div>
+    <div class="tiers split">
+      <div class="card"><h3>Exploratory tier — open</h3><p>Anyone may run the published scripts, read cases, teach, probe the model, or play the interface. Every output is tagged with its state and its uncertainty; nothing here is a validated diagnosis.</p><div class="legend" style="margin-top:14px"><span class="state st-datum">Datum</span> <span class="state st-interp">Interpretation</span> <span class="state st-norm">Normative — never produced here</span></div></div>
+      <div class="card"><h3>Canonical tier — governed</h3><p>A diagnosis counts as canonical only when produced by trained human coders under the deposited protocol, with adjudication and a versioned codebook. Model outputs may propose values; only human coders validate them.</p><div class="meta">two coders · δ-protocol · versioned codebook · human verdict</div></div>
+    </div>
+    <p class="rule"><b>White-box, model-agnostic.</b> Input → process → output: information and method go in, agents curate the scientific literature by matching language hermeneutically without violating copyright, and usable results come out — reproducible by any group at near-zero compute cost. No fine-tuning, no vendor lock-in, no trackers on this site.</p>
+    <div class="sec-head" style="margin:34px 0 8px"><h2 style="font-size:19px">Who it is for</h2></div>
+    <div class="who"><span>Researchers</span><span>Jurists</span><span>Legislative monitors</span><span>Rights defenders</span><span>Judiciary</span><span>Parliamentarians</span><span>Students</span><span>Citizens</span></div>
+    <p class="note">The long-term playable interface renders the coupled constitutional system as a serious game: perturb a function and watch emergence, closure and intervention asymmetry unfold. It is an exploratory-tier instrument by definition — a public-engagement channel and a field test of the governed templates, never a source of verdicts.</p>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section id="status" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Status</p>
+      <h2>What exists, what is next.</h2>
+      <p>Stage IV of the research trajectory (SOCE → EMERGENZA → ConstitutionsPlus → advanced simulation). The specification is written; the software is not. This page will change as the build advances, and every change is versioned in the repository.</p>
+    </div>
+    <div class="road-map">
+      <div class="stage"><div class="k">Exists</div><h3>Validated and deposited</h3><ul><li>SOCE codebook v0.1 — <a href="https://doi.org/10.5281/zenodo.21616892" target="_blank" rel="noopener">doi:10.5281/zenodo.21616892</a></li><li>Confirmatory replication preregistration — <a href="https://doi.org/10.17605/OSF.IO/5MWYS" target="_blank" rel="noopener">OSF 5MWYS</a></li><li><em>The Constitution as a Founding Inscription</em> — <a href="https://doi.org/10.5281/zenodo.21388176" target="_blank" rel="noopener">preprint</a></li><li>Platform architecture specification v0.2 and the 18 Aug 2026 adjustment (four lines, transversal axis)</li></ul></div>
+      <div class="stage now"><div class="k">Now</div><h3>Specification build</h3><ul><li>Per-line signature schema for lines 2–4 (line 1 exists)</li><li>Coupled six-function link catalogue</li><li>Formal definition of the cooperation / predation axis</li><li>Alignment protocol with the Comparative Constitutions Project and the matrix's companion data</li></ul></div>
+      <div class="stage"><div class="k">Next</div><h3>Exploratory instrument</h3><ul><li>First executable script (line 1) with tagged outputs</li><li>Visualisation layer for coupled functions</li><li>Playable interface (exploratory tier)</li><li>Hand-off to stage V: advanced simulation at scale</li></ul></div>
+    </div>
+    <div class="sec-head" style="margin:40px 0 14px"><h2 style="font-size:19px">Open infrastructure</h2></div>
+    <div class="chips">
+      <a class="chip" href="https://github.com/computational-ontology/constitutionsplus" target="_blank" rel="noopener">GitHub <small>· this site</small></a>
+      <a class="chip" href="https://github.com/computational-ontology" target="_blank" rel="noopener">Organisation <small>· all repositories</small></a>
+      <a class="chip" href="https://zenodo.org/communities/computational-ontology" target="_blank" rel="noopener">Zenodo <small>· deposits</small></a>
+      <a class="chip" href="https://data.ontology360.it/" target="_blank" rel="noopener">Companion <small>· open data</small></a>
+      <a class="chip" href="https://www.constituteproject.org/" target="_blank" rel="noopener">Constitute <small>· CCP corpus</small></a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap row">
+  <span>© 2026 Luis Bourguet · <a href="https://orcid.org/0000-0002-4673-4486" target="_blank" rel="noopener">ORCID 0000-0002-4673-4486</a> · Content licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · Part of the <a href="https://computational-ontology.com/">Computational Ontology</a> project · Hosted on GitHub Pages · <a href="https://github.com/computational-ontology/constitutionsplus" target="_blank" rel="noopener">Source</a></span>
+  <span class="wbtag">White-box practice — no trackers, no dependencies</span>
+</div></footer>
+</body>
+</html>
